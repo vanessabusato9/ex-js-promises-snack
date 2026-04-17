@@ -12,3 +12,24 @@ function getPostTitle(id) {
 getPostTitle(1)
     .then(title => console.log("Titolo:", title))
     .catch(error => console.error(error));
+
+
+//SNACK 2
+function lanciaDado() {
+    return new Promise((resolve, reject) => {
+        console.log("Sto lanciando il dado..");
+        setTimeout(() => {
+            const incastrato = Math.random() < 0.2;
+            if (incastrato) {
+                reject("Il dato si è incastrato")
+            } else {
+                const risultato = Math.floor(Math.random() * 6) + 1;
+                resolve(risultato);
+            }
+        }, 3000);
+    });
+}
+
+lanciaDado()
+    .then(risultato => console.log("Il numero è:", risultato))
+    .catch(error => console.error(error));
